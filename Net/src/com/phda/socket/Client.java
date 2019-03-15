@@ -52,11 +52,8 @@ public class Client {
 	public static void main(String[] args) throws InterruptedException {
 		
 		Client.sendMsg("hujb");
-		for(int i=0;i<10;i++) {
-			Thread.sleep(1000);
-			System.out.println("时间："+i);
-			Client.getResponse();
-		}
+		
+		Thread.sleep(300000);
 		
 		
 	}

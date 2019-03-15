@@ -44,7 +44,13 @@ public class Server {
 			input = socket.getInputStream();
 			int len = input.read(context);
 			str = new String(context,0,len);
-			System.out.print("接收到客户端内容:" + str);
+			System.out.printf("socket:%s 接收到客户端内容:%s",socket.toString(),str);
+			
+			if(str.equals("close")) {//服务端断开socket
+				System.out.println("关闭服务端socket");
+				input.close();
+				socket.close();
+			}
 			//input.close();//短连接
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -70,7 +76,6 @@ public class Server {
 			OutputStream os = socket.getOutputStream();
 			os.write(strBuff.toString().getBytes());
 			os.flush();
-			//socket.close();
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
